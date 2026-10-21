@@ -34,8 +34,11 @@ REQUIRED_CHANNEL = "@cluckpain"
 COST_PER_CALL = 0.35
 
 client = None
+print("SIGNALWIRE_PROJECT_ID =", SIGNALWIRE_PROJECT_ID)
+print("SIGNALWIRE_API_TOKEN set =", bool(SIGNALWIRE_API_TOKEN))
 if SIGNALWIRE_PROJECT_ID and SIGNALWIRE_API_TOKEN:
     client = signalwire_client(SIGNALWIRE_PROJECT_ID, SIGNALWIRE_API_TOKEN, signalwire_space_url=SIGNALWIRE_SPACE)
+    print("SignalWire client created successfully")
 
 # ====================== STORAGE ======================
 DATA_DIR = Path("data")
