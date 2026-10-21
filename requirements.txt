@@ -1,0 +1,5 @@
+flask
+signalwire
+python-dotenv
+gunicorn
+requests
