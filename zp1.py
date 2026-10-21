@@ -172,10 +172,13 @@ def is_blacklisted(uid):
     return str(uid) in load_blacklist()
 
 def add_activity(text):
-    with lock:
-        act = load_json(ACTIVITY_FILE, [])
-        act.insert(0, {"time": datetime.now().strftime("%H:%M:%S"), "text": text})
-        save_json(ACTIVITY_FILE, act[:50])
+    try:
+        with lock:
+            act = load_json(ACTIVITY_FILE, [])
+            act.insert(0, {"time": datetime.now().strftime("%H:%M:%S"), "text": str(text)})
+            save_json(ACTIVITY_FILE, act[:50])
+    except Exception as e:
+        print("add_activity error:", e)
 
 def clear_activity():
     save_json(ACTIVITY_FILE, [])
